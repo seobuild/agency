@@ -1,7 +1,7 @@
 #!/bin/sh
-set -e
+set -ex
 
-echo "DEBUG: entrypoint.sh started, CWD=$(pwd)"
+echo "DEBUG: entrypoint.sh started, CWD=$(pwd)" >&2
 
 setup_and_migrate_db() {
     if [ "${DISABLE_DB_MIGRATIONS}" = "true" ]; then
