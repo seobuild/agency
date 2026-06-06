@@ -45,8 +45,12 @@ register_background_jobs() {
     fi
 }
 
+# Yarn workspace commands must run from the monorepo root, not the package directory
+cd /app
+
 setup_and_migrate_db
 register_background_jobs
 
-# Continue with the original Docker command
+# Switch back to server package directory for the CMD
+cd /app/packages/twenty-server
 exec "$@"
