@@ -15,6 +15,9 @@ FROM node:24.15.0-alpine3.23 AS base
 RUN apk add --no-cache curl
 WORKDIR /app
 
+# Limit Nx parallelism to avoid OOM on Railway builders
+ENV NX_PARALLEL=1
+
 # ========================================================================
 # Stage 1: Install frontend dependencies (cached layer)
 # Only rebuilds when root package files or front package.jsons change
