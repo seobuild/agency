@@ -18,7 +18,8 @@ WORKDIR /app
 # Limit Nx parallelism to avoid OOM on Railway builders
 ENV NX_PARALLEL=1
 # Cap Node.js heap and limit Go-based tools (tsgo) to 1 thread
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+# Railway builders typically have 4-8GB total RAM; leave headroom for OS/Docker
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 ENV GOMAXPROCS=1
 
 # ========================================================================
@@ -39,8 +40,7 @@ COPY ./packages/twenty-sdk/package.json /app/packages/twenty-sdk/
 COPY ./packages/twenty-client-sdk/package.json /app/packages/twenty-client-sdk/
 
 RUN yarn workspaces focus twenty twenty-front twenty-front-component-renderer twenty-ui twenty-shared twenty-sdk twenty-client-sdk \
-    && yarn cache clean \
-    && npx nx reset
+    && yarn cache clean
 
 # ========================================================================
 # Stage 2: Install server dependencies (cached layer)
@@ -59,8 +59,7 @@ COPY ./packages/twenty-shared/package.json /app/packages/twenty-shared/
 COPY ./packages/twenty-client-sdk/package.json /app/packages/twenty-client-sdk/
 
 RUN yarn workspaces focus twenty twenty-server twenty-emails twenty-shared twenty-client-sdk \
-    && yarn cache clean \
-    && npx nx reset
+    && yarn cache clean
 
 # ========================================================================
 # Stage 3: Build server (cached when server source changes)
@@ -105,7 +104,7 @@ RUN npx nx run twenty-front:lingui:extract && \
 RUN if [ -d /app/packages/twenty-front/build ]; then \
       echo "Using pre-built frontend from host"; \
     else \
-      NODE_OPTIONS="--max-old-space-size=8192" npx nx build twenty-front; \
+      NODE_OPTIONS="--max-old-space-size=3072" npx nx build twenty-front; \
     fi
 
 # ========================================================================
