@@ -27,6 +27,7 @@
 **/dist
 **/build
 !packages/twenty-sdk/src/front-component-renderer/build
+!packages/twenty-sdk/src/cli/utilities/build
 **/out
 .nx/cache
 .nx/workspace-data
