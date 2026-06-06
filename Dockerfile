@@ -158,5 +158,5 @@ USER 1000
 
 EXPOSE 3000
 
-CMD ["node", "dist/main"]
+CMD ["node", "dist/src/main"]
 ENTRYPOINT ["/app/entrypoint.sh"]

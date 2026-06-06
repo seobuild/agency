@@ -6,12 +6,12 @@
   "license": "AGPL-3.0",
   "scripts": {
     "nx": "NX_DEFAULT_PROJECT=twenty-server node ../../node_modules/nx/bin/nx.js",
-    "start:prod": "node dist/main",
-    "command:prod": "node dist/command/command",
-    "worker:prod": "node dist/queue-worker/queue-worker",
-    "database:init:prod": "node dist/database/scripts/setup-db.js && yarn database:migrate:prod --force --include-slow",
-    "database:migrate:prod": "node dist/command/command run-instance-commands",
-    "clickhouse:migrate:prod": "node dist/database/clickHouse/migrations/run-migrations.js",
+    "start:prod": "node dist/src/main",
+    "command:prod": "node dist/src/command/command",
+    "worker:prod": "node dist/src/queue-worker/queue-worker",
+    "database:init:prod": "node dist/src/database/scripts/setup-db.js && yarn database:migrate:prod --force --include-slow",
+    "database:migrate:prod": "node dist/src/command/command run-instance-commands",
+    "clickhouse:migrate:prod": "node dist/src/database/clickHouse/migrations/run-migrations.js",
     "typeorm": "../../node_modules/typeorm/.bin/typeorm"
   },
   "dependencies": {
