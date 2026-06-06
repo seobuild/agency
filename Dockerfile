@@ -133,9 +133,10 @@ COPY --from=server-build /app/tsconfig.base.json /app/nx.json /app/
 COPY --from=server-build /app/.yarn /app/.yarn
 COPY --from=server-build /app/node_modules /app/node_modules
 
-# Server package (compiled dist + package.json)
+# Server package (compiled dist + package.json + src for runtime path resolution)
 COPY --from=server-build /app/packages/twenty-server/package.json /app/packages/twenty-server/
 COPY --from=server-build /app/packages/twenty-server/dist /app/packages/twenty-server/dist
+COPY --from=server-build /app/packages/twenty-server/src /app/packages/twenty-server/src
 COPY --from=server-build /app/packages/twenty-server/patches /app/packages/twenty-server/patches
 
 # Workspace packages (dist + package.json; node_modules symlinks resolve to these)
