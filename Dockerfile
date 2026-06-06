@@ -17,6 +17,9 @@ WORKDIR /app
 
 # Limit Nx parallelism to avoid OOM on Railway builders
 ENV NX_PARALLEL=1
+# Cap Node.js heap and limit Go-based tools (tsgo) to 1 thread
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV GOMAXPROCS=1
 
 # ========================================================================
 # Stage 1: Install frontend dependencies (cached layer)
