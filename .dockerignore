@@ -26,6 +26,7 @@
 # Build outputs (rebuilt in container)
 **/dist
 **/build
+!packages/twenty-sdk/src/front-component-renderer/build
 **/out
 .nx/cache
 .nx/workspace-data
