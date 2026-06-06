@@ -97,7 +97,7 @@ RUN apk add --no-cache \
 
 COPY ./packages/twenty-docker/twenty/entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
-WORKDIR /app/packages/twenty-server
+WORKDIR /app
 
 ARG APP_VERSION
 ENV APP_VERSION=$APP_VERSION
@@ -132,5 +132,5 @@ USER 1000
 
 EXPOSE 3000
 
-CMD ["node", "dist/main"]
+CMD ["node", "packages/twenty-server/dist/main"]
 ENTRYPOINT ["/app/entrypoint.sh"]
