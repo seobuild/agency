@@ -1,5 +1,62 @@
+# Git & CI
 .git
+.gitignore
+.github
+.gitattributes
+
+# IDE & Editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Environment files (sensitive)
 .env
+.env.*
+**/.env
+**/.env.*
+
+# Dependencies (reinstalled in container)
 **/node_modules
+.yarn/cache
+.yarn/install-state.gz
+.pnp.*
+
+# Build outputs (rebuilt in container)
+**/dist
+**/build
+**/out
 .nx/cache
-packages/twenty-server/.env
+.nx/workspace-data
+
+# Documentation & assets that don't affect builds
+docs
+*.md
+*.MD
+LICENSE
+CHANGELOG
+CODE_OF_CONDUCT
+CONTRIBUTING
+
+# Test files
+coverage
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+jest.config.*
+vitest.config.*
+
+# Storybook & Dev tools
+storybook-static
+.storybook
+
+# Misc
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
