@@ -133,4 +133,4 @@ USER 1000
 EXPOSE 3000
 
 CMD ["node", "packages/twenty-server/dist/main"]
-ENTRYPOINT ["sh", "/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
