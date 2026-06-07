@@ -6,5 +6,6 @@ export NODE_PORT=${PORT:-3000}
 
 echo "Starting Twenty CRM server on port ${NODE_PORT}..."
 
-# Run the official image entrypoint with all original arguments
-exec /app/entrypoint.sh "$@"
+# Skip the official entrypoint which has path issues with migration scripts.
+# The official image's CMD is "node dist/main" — just run it directly.
+exec "$@"
