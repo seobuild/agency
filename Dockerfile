@@ -2,7 +2,7 @@
 # This avoids long/complex source builds on Railway's infrastructure.
 # The wrapper entrypoint ensures Railway's PORT env var maps to Twenty's NODE_PORT.
 
-FROM twentycrm/twenty:latest
+FROM twentycrm/twenty:v2.9.1
 
 # Copy our Railway-specific wrapper entrypoint
 # (must already be executable in git; chmod fails in upstream image)
