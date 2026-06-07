@@ -10,4 +10,5 @@ COPY ./railway-entrypoint.sh /app/railway-entrypoint.sh
 
 # The official image already exposes 3000 and has the app built.
 # We just need to inject the port mapping at runtime.
+CMD ["node", "dist/main"]
 ENTRYPOINT ["/app/railway-entrypoint.sh"]
