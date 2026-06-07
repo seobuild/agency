@@ -2,7 +2,7 @@
 # This avoids long/complex source builds on Railway's infrastructure.
 # The wrapper entrypoint ensures Railway's PORT env var maps to Twenty's NODE_PORT.
 
-FROM twentycrm/twentynext:latest
+FROM twentycrm/twenty:latest
 
 WORKDIR /app
 
