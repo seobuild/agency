@@ -4,8 +4,6 @@
 
 FROM twentycrm/twenty:latest
 
-WORKDIR /app
-
 # Copy our Railway-specific wrapper entrypoint
 # (must already be executable in git; chmod fails in upstream image)
 COPY ./railway-entrypoint.sh /app/railway-entrypoint.sh
